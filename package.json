@@ -1,0 +1,13 @@
+{
+  "name": "test-repo-ployed-public",
+  "version": "1.0.0",
+  "description": "Minimal Node.js hello world server.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

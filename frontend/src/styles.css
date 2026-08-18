@@ -1,0 +1,365 @@
+:root {
+  color: #172026;
+  background: #f4f7f8;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --accent: #1f7a6d;
+  --accent-strong: #11564d;
+  --border: #cbd8d8;
+  --muted: #5f6e74;
+  --surface: #ffffff;
+  --surface-muted: #edf3f2;
+  --danger: #b42318;
+  --shadow: 0 24px 70px rgb(23 32 38 / 12%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgb(31 122 109 / 35%);
+  outline-offset: 2px;
+}
+
+.app-shell {
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgb(31 122 109 / 12%), transparent 36%),
+    linear-gradient(315deg, rgb(185 72 55 / 10%), transparent 32%),
+    #f4f7f8;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.todo-panel {
+  background: var(--surface);
+  border: 1px solid rgb(203 216 216 / 82%);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  max-width: 860px;
+  padding: 32px;
+  width: min(100%, 860px);
+}
+
+.panel-header {
+  align-items: start;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr auto;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  color: var(--accent-strong);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  color: #142329;
+  font-size: clamp(2.1rem, 7vw, 4.25rem);
+  line-height: 0.95;
+  margin-bottom: 0;
+}
+
+.stats-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(72px, 1fr));
+}
+
+.stats-grid span {
+  background: var(--surface-muted);
+  border: 1px solid rgb(203 216 216 / 74%);
+  border-radius: 8px;
+  color: var(--muted);
+  display: grid;
+  font-size: 0.76rem;
+  min-height: 72px;
+  padding: 10px;
+  place-items: center;
+  text-align: center;
+}
+
+.stats-grid strong {
+  color: #142329;
+  display: block;
+  font-size: 1.35rem;
+}
+
+.todo-form {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.todo-form label {
+  color: #26363d;
+  font-weight: 700;
+}
+
+.todo-entry {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr auto;
+}
+
+.todo-entry input,
+.edit-input {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: #172026;
+  min-height: 48px;
+  padding: 0 14px;
+  width: 100%;
+}
+
+.todo-entry button {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: #ffffff;
+  font-weight: 700;
+  min-height: 48px;
+  min-width: 92px;
+  padding: 0 18px;
+}
+
+.toolbar {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin: 0 0 18px;
+}
+
+.filter-group {
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+}
+
+.filter-group button,
+.clear-button {
+  border-radius: 6px;
+  font-weight: 700;
+  min-height: 38px;
+  padding: 0 12px;
+}
+
+.filter-group button {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+}
+
+.filter-group button.selected {
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgb(23 32 38 / 10%);
+  color: #142329;
+}
+
+.clear-button {
+  background: #fff7f5;
+  border: 1px solid #f0c9c2;
+  color: var(--danger);
+}
+
+.todo-list {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-item {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  min-height: 64px;
+  padding: 10px 12px;
+}
+
+.check-control {
+  display: grid;
+  height: 28px;
+  place-items: center;
+  position: relative;
+  width: 28px;
+}
+
+.check-control input {
+  height: 28px;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  width: 28px;
+}
+
+.check-control span {
+  align-items: center;
+  border: 2px solid #7b9293;
+  border-radius: 50%;
+  display: flex;
+  height: 24px;
+  justify-content: center;
+  width: 24px;
+}
+
+.check-control input:checked + span {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.check-control input:checked + span::after {
+  color: #ffffff;
+  content: "✓";
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
+.todo-title {
+  background: transparent;
+  border: 0;
+  color: #172026;
+  min-height: 40px;
+  overflow-wrap: anywhere;
+  padding: 0;
+  text-align: left;
+}
+
+.todo-item.completed .todo-title {
+  color: #718084;
+  text-decoration: line-through;
+}
+
+.icon-button {
+  background: #f8fbfb;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--danger);
+  font-size: 1.5rem;
+  height: 40px;
+  line-height: 1;
+  width: 40px;
+}
+
+.empty-state {
+  background: var(--surface-muted);
+  border: 1px dashed #9eb2b3;
+  border-radius: 8px;
+  color: var(--muted);
+  padding: 28px;
+  text-align: center;
+}
+
+.empty-state h2 {
+  color: #142329;
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.empty-state p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    align-items: start;
+    padding: 16px;
+  }
+
+  .todo-panel {
+    padding: 22px;
+  }
+
+  .panel-header,
+  .todo-entry {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .filter-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .clear-button,
+  .filter-group button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .todo-panel {
+    padding: 18px;
+  }
+
+  .stats-grid {
+    gap: 6px;
+  }
+
+  .stats-grid span {
+    min-height: 64px;
+    padding: 8px 4px;
+  }
+
+  .todo-item {
+    align-items: start;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+}
